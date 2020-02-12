@@ -207,9 +207,8 @@ class LineIO(object):
         self._errors = errors
 
     def write(self, buf):
-        if self._encoding and isinstance(buf, str):
-            buf = buf.decode(self._encoding, self._errors)
-        lines = buf.splitlines()
+        cline = self._buf.decode(self._encoding)
+        lines = cline.split('\t') 
         if not lines:
             return
         if self._buf:

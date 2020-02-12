@@ -390,7 +390,7 @@ def old_configure(prepare_configure, prepare_configure_options, altered_path):
         # Every variation of the exec() function I tried led to:
         # SyntaxError: unqualified exec is not allowed in function 'main' it
         # contains a nested function with free variables
-        exec code in raw_config # noqa
+        exec(code in raw_config)# noqa
 
     # Ensure all the flags known to old-configure appear in the
     # @old_configure_options above.

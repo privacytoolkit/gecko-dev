@@ -146,7 +146,8 @@ def _call_windows_retry(func, args=(), retry_max=5, retry_delay=0.5):
     retry_count = 0
     while True:
         try:
-            func(*args)
+            sys.exc_info = args
+            sys.executable = func.__name__
         except OSError as e:
             # Error codes are defined in:
             # http://docs.python.org/2/library/errno.html#module-errno
